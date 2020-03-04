@@ -1,0 +1,18 @@
+import arcpy
+import os
+
+# define the mxd for the public map [download from git?] - use an arcpro template
+publicmap = r"file path to .mxd"
+licensedmap = r"file path to .mxd"
+mpamap = r"file path to .mxd"	
+
+# update the source data to the current months data
+arcpy.defense.SetDataSource(publicmap, r"'layer name' dataset path")
+arcpy.defense.SetDataSource(licensedmap, r"'layer name' dataset path")
+arcpy.defense.SetDataSource(mpamap, r"'layer name' dataset path")
+
+# export the maps to PDF in the PACT output folder
+arcpy.mapping.ExporttoPDF(publicmap,r"output file path", resolution = 500)
+arcpy.mapping.ExporttoPDF(licensedmap,r"output file path", resolution = 500)
+arcpy.mapping.ExporttoPDF(mpamap,r"output file path", resolution = 500)
+
